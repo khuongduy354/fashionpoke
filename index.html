@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DownPoke Fashion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Poke fashion</h1>
+      Tra cứu thông tin fashion nhanh cho sự kiện hè.
+      <h3>Mã của nhà phát triển</h3>
+      <p>Ủng hộ mình đi mọi người</p>
+      <p><a>7cc11f65</a></p>
+      <img
+        width="300px"
+        src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t1.15752-9/446029382_794596799479204_2279794701221745436_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeG9Pl_hQAiEwc4HCfPFoJxaJZCCGRrCK0YlkIIZGsIrRoQb6h5_k9dYu9pG9Cgb6wt-KvouyGj9aslKy15fYPOR&_nc_ohc=R3gO5zgBzu8Q7kNvgG4PUXk&_nc_ht=scontent.fsgn8-4.fna&oh=03_Q7cD1QGvXqN0k-y563g3NmCyMGvHOhBOQt7kFHSwpe_Nbwr4ag&oe=6696A95C"
+      />
+
+      <nav>
+        <ul></ul>
+      </nav>
+      <style>
+        .info {
+          visibility: hidden;
+          position: fixed;
+          top: 100px;
+          left: 200px;
+          background: black;
+          color: white;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        .show {
+          visibility: visible;
+        }
+        .selected {
+          border: thin solid blue;
+        }
+      </style>
+    </header>
+
+    <h3>Nguồn</h3>
+    Data từ
+    <a
+      href="
+        https://www.facebook.com/groups/998961794132738/permalink/1369353367093577/?mibextid=oFDknk&rdid=mcQIOjXI8em1y36d&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fp%2FTq2GFKrcnCWAqCnt%2F%3Fmibextid%3DoFDknk
+        "
+      >đây</a
+    >, thanks bạn nhé Sagara Sousuke.
+    <h2>Welcome to Poke Fashion</h2>
+
+    <div class="list"></div>
+
+    <div class="info show"></div>
+
+    <script>
+      const characterNames = {
+        1: "Tate",
+        2: "Liza",
+        3: "Cynthia",
+        4: "Elesa",
+        5: "Gary Oak",
+        6: "Serena Noel",
+        7: "Lillie",
+        8: "Olivia",
+        9: "Zinnia",
+        10: "Molayne",
+        11: "Glacia",
+        12: "Karen",
+        13: "James",
+        14: "Jessie",
+        15: "Alice",
+        16: "Lance",
+        17: "Norman",
+        18: "Asuna",
+        19: "Lana",
+        20: "Lysandre",
+        21: "Mina",
+        22: "Wallace",
+        23: "Lusamine",
+        24: "Erika",
+        25: "Sabrina",
+        26: "Koga",
+        27: "Lorelei",
+        28: "Green",
+        29: "Koga",
+      };
+
+      const characters = {
+        1: "Tate: dam 5%, speed 3%, dam địch giảm 15% 3 hiệp",
+        2: "Liza: crit 5%, speed 3%, crit địch giảm 15% 3 hiệp",
+        3: "Cynthia: địch giảm 10% def arm 3 hiệp",
+        4: "Elesa: 5% dame, crit, def, arm cho pet Điện phe ta",
+        5: "Gary Oak: 5% dame, crit, def, arm cho pet Đất phe ta",
+        6: "Serena Noel: 5% dame, crit, def, arm cho pet Lửa phe ta",
+        7: "Lillie: tốc độ pet địch giảm 10% 3 hiệp",
+        8: "Olivia: pet Nham phe ta 5% HP, dam, crit, def, arm",
+        9: "Zinnia: pet Rồng phe ta 5% HP, dam, crit, def, arm",
+        10: "Molayne: pet Thép phe ta 5% HP, dam, crit, def, arm",
+        11: "Glacia: pet Băng phe ta 5% HP, dam, crit, def, arm",
+        12: "Karen: pet Ác phe ta 5% HP, dam, crit, def, arm",
+        13: "James: speed 200, def arm 700",
+        14: "Jessie: hp 8000, dam crit 1000",
+        15: "Alice: đồ bơi sát thương khắc chế của hệ Rồng phe ta tăng 30%",
+        16: "Lance: 5% hp, dam crit cho tất cả pet phe ta, x2 hiệu quả với hệ Rồng",
+        17: "Norman: 5% def, arm, speed cho tất cả pet phe ta, x2 hiệu quả với hệ Thường",
+        18: "Asuna: 5% tỉ lệ bạo kích, dam, crit cho tất cả pet phe ta, x2 hiệu quả với hệ Lửa",
+        19: "Lana: 5% def, arm, speed cho tất cả pet phe ta, x2 hiệu quả với hệ Nước",
+        20: "Lysandre: 5% speed, trúng, né cho tất cả pet phe ta, x2 hiệu quả với hệ Lửa",
+        21: "Mina: 5% tỉ lệ bạo kích, dam, crit cho tất cả pet phe ta, x2 hiệu quả với hệ Yêu",
+        22: "Wallace: 5% tỉ lệ speed, def, arm cho tất cả pet phe ta, x2 hiệu quả với hệ Nước",
+        23: "Lusamine: 5% HP, dam, crit, def, arm",
+        24: "Erika: 5% dam, crit, speed cho tất cả pet phe ta, x2 hiệu quả với hệ Cỏ",
+        25: "Sabrina: 5% tỉ lệ bạo kích, dam, crit cho tất cả pet phe ta, x2 hiệu quả với hệ Siêu",
+        26: "Koga: 5% sát thương bạo kích, trúng, speed cho tất cả pet phe ta, x2 hiệu quả với hệ Độc",
+        27: "Lorelei: 5% HP, speed, né cho tất cả pet phe ta, x2 hiệu quả với hệ Băng",
+        28: "Green: sát thương khắc chế tất cả pet phe ta tăng 10%, x2 hiệu quả với pet Ác",
+        29: "Koga: 5% sát thương bạo kích, trúng, speed cho tất cả pet phe ta, x2 hiệu quả với hệ Độc",
+      };
+
+      const list = document.querySelector(".list");
+
+      for (let i = 1; i < 30; i++) {
+        const url = `https://pokedaichien.pocketgamesol.com/activity/20230628/fashion/${i}.png`;
+
+        const div = document.createElement("div");
+        div.style.display = "inline-block";
+
+        const img = document.createElement("img");
+        img.src = url;
+
+        const name = characterNames[i];
+        const textNode = document.createElement("p");
+        textNode.style.textAlign = "center";
+        textNode.textContent = name;
+
+        div.appendChild(img);
+        div.appendChild(textNode);
+
+        img.addEventListener("mouseover", (event) => {
+          const info = document.querySelector(".info");
+          info.innerHTML = `${characters[i]}`;
+          info.style.top = `${event.clientY}px`;
+          info.style.left = `${event.clientX}px`;
+          info.classList.add("show");
+          img.classList.add("selected");
+        });
+        img.addEventListener("mouseout", () => {
+          const info = document.querySelector(".info");
+          info.classList.remove("show");
+          img.classList.remove("selected");
+        });
+        list.appendChild(div);
+      }
+    </script>
+  </body>
+</html>
